@@ -22,7 +22,7 @@
  * @subpackage	models.behaviors
  */
 
-CakePlugin::load('Utils');
+// CakePlugin::load('Utils');
 
 class BlackHoleException extends Exception {}
 class NoActionException extends Exception {}
