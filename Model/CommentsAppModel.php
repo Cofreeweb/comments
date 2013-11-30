@@ -9,7 +9,7 @@
  * @license MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 
-CakePlugin::load('Utils');
+// CakePlugin::load('Utils');
  
 /**
  * Comments AppModel

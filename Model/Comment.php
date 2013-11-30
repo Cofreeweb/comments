@@ -30,7 +30,7 @@ class Comment extends CommentsAppModel {
  * @var string $name
  */
 	public $actsAs = array(
-		'Utils.Sluggable' => array('label' => 'title'),
+		'Cofree.Sluggable' => array('label' => 'title'),
 		'Tree');
 
 /**
