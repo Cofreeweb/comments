@@ -367,7 +367,7 @@ class CommentsComponent extends Component {
 		$paginate = $this->_prepareModel($options);
 
 		$overloadPaginate = !empty($this->Controller->paginate['Comment']) ? $this->Controller->paginate['Comment'] : array();		
-		$this->Controller->paginate = array_merge(array('Comment' => $paginate), $overloadPaginate); 
+		$this->Controller->paginate = array('Comment' => array_merge( $paginate, $overloadPaginate)); 
 		return $this->Controller->paginate($this->Controller->{$this->modelName}->Comment);
 	}
 
@@ -483,7 +483,7 @@ class CommentsComponent extends Component {
 						}
 						$this->_call('view', array($this->commentParams['displayType'], false));
 					}
-				} else {
+				} else {  			  
 					$this->flash(__d('comments', 'The Comment could not be saved. Please, try again.'));
 				}
 			}
