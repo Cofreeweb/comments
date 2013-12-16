@@ -68,7 +68,9 @@ class CommentableBehavior extends ModelBehavior {
 				'className' => $cfg['commentModel'],
 				'foreignKey' => 'foreign_key',
 				'unique' => true,
-				'conditions' => '',
+				'conditions' => array(
+				    'Comment.model' => $model->alias
+				),
 				'fields' => '',
 				'dependent' => true,
 				'order' => '',
