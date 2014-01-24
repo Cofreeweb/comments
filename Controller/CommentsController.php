@@ -195,6 +195,26 @@ class CommentsController extends CommentsAppController {
 		}
 		$this->redirect(array('action'=>'index'));
 	}
+	
+/**
+ * Método común para varios controllers que guarda un campo de la base de datos mediante ajax
+ * Los valores que llegan por get o post son 'value', 'pk', 'name'
+ *
+ * @return void
+ */
+  public function admin_field()
+  {
+    $this->autoRender = false;
+    $value = $this->request->data ['value'];
+    
+    if( is_array( $value))
+    {
+      $value = current( $value);
+    }
+
+    $this->Comment->id = $this->request->data ['pk'];
+    $this->Comment->saveField( $this->request->data ['name'], $value);
+  }
 
 /**
  * View action

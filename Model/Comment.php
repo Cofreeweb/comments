@@ -54,6 +54,14 @@ class Comment extends CommentsAppModel {
  */
 	public $permalink;
   
+  public $validate = array(
+      'body' => array(
+			    'mustNotEmpty' => array(
+					    'rule' => 'notEmpty',
+					    'message'=> 'Por favor, introduce un título'
+					)
+			),
+	);
   
   
 /**
