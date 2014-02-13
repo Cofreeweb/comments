@@ -60,7 +60,7 @@
 			</td>
 			<td>
 				<div class="hidden"><?php echo h($comment['Comment']['body']); ?> </div>
-                <?php echo $this->Html->link(__('Hide'), '#', array('class' => 'toggle')); ?>
+                <?php echo $this->Html->link('Hide', '#', array('class' => 'toggle')); ?>
 			</td>
 			<td>
 				<?php echo h($comment['Comment']['author_name']); ?>
