@@ -1,5 +1,11 @@
 <?php
 /**
+ *
+ * Eventos
+ *
+ * Comment.Controller.Comments.afterChangeStatus
+ * 
+ *
  * Copyright 2009-2010, Cake Development Corporation (http://cakedc.com)
  *
  * Licensed under The MIT License
@@ -197,7 +203,7 @@ class CommentsController extends CommentsAppController {
 	}
 	
 /**
- * Método común para varios controllers que guarda un campo de la base de datos mediante ajax
+ * Método que guarda un campo de la base de datos mediante ajax
  * Los valores que llegan por get o post son 'value', 'pk', 'name'
  *
  * @return void
@@ -211,9 +217,15 @@ class CommentsController extends CommentsAppController {
     {
       $value = current( $value);
     }
-
+    
+    
     $this->Comment->id = $this->request->data ['pk'];
+    $this->oldComment = $this->Comment->read();
     $this->Comment->saveField( $this->request->data ['name'], $value);
+    $this->newComment = $this->Comment->read();
+    // BeforeFilter Event
+    $event = new CakeEvent( 'Comment.Controller.Comments.afterChangeStatus', $this);
+		$this->getEventManager()->dispatch( $event);
   }
 
 /**
