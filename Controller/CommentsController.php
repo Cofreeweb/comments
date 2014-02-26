@@ -195,11 +195,11 @@ class CommentsController extends CommentsAppController {
         if (!$this->Comment->exists()) {
 			$this->Session->setFlash(__d('comments', 'Invalid id for Comment'));
 		} elseif ($this->Comment->delete()) {
-			$this->Session->setFlash(__d('comments', 'Comment deleted'));
+			$this->Manager->flashSuccess(__d('comments', 'Se ha borrado el comentario'));
 		} else {
 			$this->Session->setFlash(__d('comments', 'Impossible to delete the Comment. Please try again.'));
 		}
-		$this->redirect(array('action'=>'index'));
+		$this->redirect( $this->referer());
 	}
 	
 /**
