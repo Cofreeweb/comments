@@ -102,6 +102,21 @@ class Comment extends CommentsAppModel {
 			}
 		}
 	}
+	
+	public function afterFind( $results)
+	{
+	  if( isset( $results [0]))
+	  {
+	    foreach( $results as &$result)
+	    {
+	      if( isset( $result [$this->alias]['author_name']) && empty( $result [$this->alias]['author_name']))
+	      {
+	        $result [$this->alias]['author_name'] = __( "Anónimo");
+	      }
+	    }
+	  }
+	  return $results;
+	}
 
 /**
  * Group operation procession
