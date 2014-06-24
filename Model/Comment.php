@@ -15,6 +15,15 @@
  * @package comments
  * @subpackage comments.models
  */
+ 
+ 
+/**
+  * Users Controller
+  *
+  * Events
+  *
+  * Comment.Model.Comment.construct
+  */
 class Comment extends CommentsAppModel {
 
 /**
@@ -71,6 +80,15 @@ class Comment extends CommentsAppModel {
  */
     public $filterArgs = array();
 
+
+  public function __construct( $id = false, $table = null, $ds = null)
+  {      
+		parent::__construct( $id, $table, $ds);
+    
+    // BeforeFilter Event
+    $event = new CakeEvent( 'Comment.Model.Comment.construct', $this);
+		$this->getEventManager()->dispatch($event);
+  }
 
 /**
  * beforeSave

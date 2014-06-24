@@ -367,7 +367,10 @@ class CommentsComponent extends Component {
 		$paginate = $this->_prepareModel($options);
 		$overloadPaginate = !empty($this->Controller->paginate['Comment']) ? $this->Controller->paginate['Comment'] : array();		
 		$this->Controller->paginate = array('Comment' => array_merge( $paginate, $overloadPaginate)); 
-		return $this->Controller->paginate($this->Controller->{$this->modelName}->Comment);
+		$this->Controller->{$this->modelName}->Comment->recursive = 1;
+		$data = $this->Controller->paginate($this->Controller->{$this->modelName}->Comment);
+		$this->Controller->{$this->modelName}->Comment->recursive = 0;
+		return $data;
 	}
 
 /**
