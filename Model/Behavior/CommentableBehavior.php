@@ -87,6 +87,9 @@ class CommentableBehavior extends ModelBehavior {
 				'conditions' => '',
 				'fields' => '',
 				'counterCache' => true,
+				'counterScope' => array(
+				    'Comment.approved' => 1
+				),
 				'dependent' => false))), false);
 		$model->Comment->bindModel(array('belongsTo' => array(
 			$cfg['userModelAlias'] => array(
@@ -95,6 +98,9 @@ class CommentableBehavior extends ModelBehavior {
 				'conditions' => '',
 				'fields' => '',
 				'counterCache' => true,
+				'counterScope' => array(
+				    'Comment.approved' => 1
+				),
 				'order' => ''))), false);
 	}
 
