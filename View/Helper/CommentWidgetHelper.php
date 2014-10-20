@@ -205,7 +205,7 @@ class CommentWidgetHelper extends AppHelper {
  * @param array $url
  * @return array, generated url
  */
-	public function prepareUrl(&$url) {
+	public function prepareUrl( $url) {
 		if ($this->globalParams['target']) {
 			if (is_string($this->globalParams['ajaxAction'])) {
 				$url['action'] = $this->globalParams['ajaxAction'];
