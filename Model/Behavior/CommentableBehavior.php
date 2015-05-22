@@ -209,7 +209,7 @@ class CommentableBehavior extends ModelBehavior {
 				$model->Comment->Behaviors->attach('Tree', array('scope' => array('Comment.foreign_key' => $fk)));
 			}
 
-			if ($model->Comment->save()) {
+			if ($model->Comment->saveAll()) {
 				$id = $model->Comment->id;
 				$data['Comment']['id'] = $id;
 				$model->Comment->data[$model->Comment->alias]['id'] = $id;
