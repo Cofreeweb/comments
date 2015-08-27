@@ -366,7 +366,9 @@ class CommentsComponent extends Component {
 	public function callback_fetchDataFlat($options) {
 		$paginate = $this->_prepareModel($options);
 		$overloadPaginate = !empty($this->Controller->paginate['Comment']) ? $this->Controller->paginate['Comment'] : array();		
+		$overloadPaginate ['order'] = array( 'Comment.created' => 'desc');
 		$this->Controller->paginate = array('Comment' => array_merge( $paginate, $overloadPaginate)); 
+
 		$this->Controller->{$this->modelName}->Comment->recursive = 1;
 		$data = $this->Controller->paginate($this->Controller->{$this->modelName}->Comment);
 		$this->Controller->{$this->modelName}->Comment->recursive = 0;
